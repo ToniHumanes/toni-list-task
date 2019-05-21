@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../task-element/task-element.html">
+
+<dom-module id="list-task">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <task-element></task-element>
+  </template>
+
+  <script>
+    /**
+     * `list-task`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ListTask extends Polymer.Element {
+      static get is() { return 'list-task'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'list-task'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ListTask.is, ListTask);
+  </script>
+</dom-module>

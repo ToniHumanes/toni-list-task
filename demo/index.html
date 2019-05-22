@@ -1,30 +1,68 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>list-task demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <title>list-task demo</title>
 
-    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-    <link rel="import" href="../list-task.html">
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic list-task demo</h3>
-      <demo-snippet>
-        <template>
-          <list-task></list-task>
-        </template>
-      </demo-snippet>
-    </div>
-  </body>
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../list-task.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic list-task demo</h3>
+    <demo-snippet>
+      <template>
+        <list-task></list-task>
+      </template>
+      <script>
+        let htmlTaskList = document.getElementsByTagName('list-task')[0];
+        let lista = [{
+            id: 0,
+            title: "Learn Polymer 2",
+            done: false,
+            canceled: false
+          },
+          {
+            id: 1,
+            title: "Speak English",
+            done: true,
+            canceled: false
+          },
+          {
+            id: 2,
+            title: "Become preside of Spain",
+            done: false,
+            canceled: true
+          },
+          {
+            id: 3,
+            title: "Submarine drive license",
+            done: false,
+            canceled: false
+          },
+          {
+            id: 4,
+            title: "Win the lotery",
+            done: false,
+            canceled: true
+          }
+        ];
+        htmlTaskList.taskList = lista;
+      </script>
+    </demo-snippet>
+  </div>
+</body>
+
 </html>

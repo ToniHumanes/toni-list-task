@@ -8,8 +8,21 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
-    <task-element></task-element>
+    <ul>
+      <template is="dom-repeat" items=[[taskList]]>
+        <li>
+          <task-element
+            key=[[item.key]]
+            title=[[item.title]]
+            done=[[item.done]]
+            canceled=[[item.canceled]]
+            sort="sortTask" 
+            
+          ></task-element>
+        </li>
+      </template>
+    </ul>
+
   </template>
 
   <script>
@@ -25,11 +38,13 @@
       static get is() { return 'list-task'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'list-task'
-          }
+         taskList: Array,
         };
+      }
+      sortTask(prev, next){
+        let order1 = prev.canceled + (prev.done * 2)
+        let order2 = prev.canceled + (prev.done * 2);
+        return order1 - order2;
       }
     }
 

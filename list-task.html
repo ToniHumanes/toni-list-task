@@ -8,16 +8,17 @@
         display: block;
       }
     </style>
+      <form action="">
+        <input type="text" value="{{filterValue::input}}">
+      </form>
     <ul>
-      <template is="dom-repeat" items=[[taskList]]>
+      <template is="dom-repeat" items=[[taskList]] sort="sortTask" filter="{{filterTask(filterValue)}}">
         <li>
           <task-element
             key=[[item.key]]
             title=[[item.title]]
             done=[[item.done]]
             canceled=[[item.canceled]]
-            sort="sortTask" 
-            
           ></task-element>
         </li>
       </template>
@@ -39,12 +40,23 @@
       static get properties() {
         return {
          taskList: Array,
+         description:{
+           type: String,
+           value: ''
+         },
+         filterValue: String
         };
       }
       sortTask(prev, next){
-        let order1 = prev.canceled + (prev.done * 2)
-        let order2 = prev.canceled + (prev.done * 2);
+        let order1 = prev.canceled + (prev.done * 2);
+        let order2 = next.canceled + (next.done * 2);
         return order1 - order2;
+      }
+
+      filterTask(text){
+        return function(value){
+          return value.title.indexOf > -1;
+        }
       }
     }
 
